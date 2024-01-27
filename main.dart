@@ -1,7 +1,8 @@
 import 'dart:io';
 
 void main() {
-  while (true) {
+  bool continueProgram = true;
+  while (continueProgram) {
     print("Select an option:");
     print('1:Length conversion:');
     print('2:Temperature conversion:');
@@ -16,12 +17,16 @@ void main() {
         temperatureConversion();
         break;
       case 3:
-        // timeConversion();
+        timeConversion();
         break;
       default:
         print('Invalid option.Please try again!');
         break;
     }
+
+    stdout.write('Do you want to continue? (yes/no): ');
+    String userInput = stdin.readLineSync()!.toLowerCase();
+    continueProgram = userInput == 'yes';
   }
 }
 
@@ -84,5 +89,49 @@ void temperatureConversion() {
     double temperature = double.parse(stdin.readLineSync()!);
     double result = (temperature - 32) * 5 / 9;
     print("Temperature in Farenheit:$result");
+  }
+}
+
+void timeConversion() {
+  print("Select a time conversion program:");
+  print('1:Seconds to Minutes:');
+  print('2:Minutes to Seconds:');
+  print('3:Minutes to Hours:');
+  print('4:Seconds to Hours:');
+  print('5:Milliseconds to Minutes:');
+  print('6:Milliseconds to Hours:');
+  int timeOption = int.parse(stdin.readLineSync()!);
+  if (timeOption == 1) {
+    stdout.write('Enter time in Seconds:');
+    double time = double.parse(stdin.readLineSync()!);
+    double result = time / 60;
+    print("Time in minutes:$result");
+  } else if (timeOption == 2) {
+    stdout.write('Enter time in Minutes:');
+    double time = double.parse(stdin.readLineSync()!);
+    double result = time * 60;
+    print("Time in seconds:$result");
+  }
+  if (timeOption == 3) {
+    stdout.write('Enter time in Minutes:');
+    double time = double.parse(stdin.readLineSync()!);
+    double result = time / 60;
+    print("Time in hours:$result");
+  } else if (timeOption == 4) {
+    stdout.write('Enter time in Seconds:');
+    double time = double.parse(stdin.readLineSync()!);
+    double result = time / 3600;
+    print("Time in hours:$result");
+  }
+  if (timeOption == 5) {
+    stdout.write('Enter time in Milliseconds:');
+    double time = double.parse(stdin.readLineSync()!);
+    double result = time / 60000;
+    print("Time in minutes:$result");
+  } else if (timeOption == 6) {
+    stdout.write('Enter time in Milliseconds:');
+    double time = double.parse(stdin.readLineSync()!);
+    double result = time / 36000000;
+    print("Time in hours:$result");
   }
 }
