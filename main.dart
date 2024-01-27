@@ -70,7 +70,7 @@ void lengthConversion() {
 }
 
 void temperatureConversion() {
-  print("Select a time conversion program:");
+  print("Select a temperature conversion program:");
   print('1:Farenheit to Celsius:');
   print('2:Celsius to Farenheit');
   int temperatureOption = int.parse(stdin.readLineSync()!);
